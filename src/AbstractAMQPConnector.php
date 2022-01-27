@@ -38,6 +38,8 @@ abstract class AbstractAMQPConnector
             return new AMQPLibConnectorSsl();
         } elseif ($name == 'redis') {
             return new RedisConnector();
+        } elseif ($name == 'mongodb') {
+            return new MongodbConnector();
         } else {
             throw new \Exception('Unknown extension name ' . $name);
         }
