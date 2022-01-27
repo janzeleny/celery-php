@@ -112,14 +112,14 @@ class MongodbConnector extends AbstractAMQPConnector
     }
 
     /**
-     * Post the message to Redis
+     * Post the message to Mongodb
      * This function implements the AbstractAMQPConnector interface
      */
     public function PostToExchange($connection, $details, $body, $properties, $headers)
     {
         $connection = $this->Connect($connection);
         $message = $this->GetMessage($details, $body, $properties, $headers);
-        $connection->lPush($details['exchange'], $this->ToStr($message));
+        $connection->insertOne($details['exchange'] => $this->ToStr($message))
         return true;
     }
 
@@ -201,7 +201,7 @@ class MongodbConnector extends AbstractAMQPConnector
     {
         if(!empty($details['username']) && !empty($details['password'])) $creds = $details['username'].":".$details['password']."@";
         $connect = new MongoDB\Client("mongodb://".$creds.$details['host'].":".$details['port']);
-      
+        $connect = $connect->$details['vhost']->$details['collection'];
         return $connect;
     }
 }
