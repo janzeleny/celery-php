@@ -60,7 +60,7 @@ class Celery extends CeleryAbstract
      * @param string exchange AMQP exchange to use. For Redis it maps to queue key name. See CELERY_DEFAULT_EXCHANGE in Celery docs. (set to 'celery' when in doubt)
      * @param string binding AMQP binding a.k.a. routing key. See CELERY_DEFAULT_ROUTING_KEY. (set to 'celery' when in doubt)
      * @param int port
-     * @param string connector Which connector library to use. One of: 'pecl', 'php-amqplib', 'php-amqplib-ssl', 'redis'
+     * @param string connector Which connector library to use. One of: 'pecl', 'php-amqplib', 'php-amqplib-ssl', 'redis' , 'mongodb'
      * @param int result_expire Expire time for result queue, milliseconds (for AMQP exchanges only)
      * @param array ssl_options Used only for 'php-amqplib-ssl' connections, an associative array with values as defined here: http://php.net/manual/en/context.ssl.php
      */
