@@ -67,7 +67,7 @@ class AMQPLibConnector extends AbstractAMQPConnector
 
     public function GetConnectionObject($details)
     {
-        return new \PhpAmqpLib\Connection\AMQPConnection(
+        return new \PhpAmqpLib\Connection\AMQPStreamConnection(
             $details['host'],
             $details['port'],
             $details['login'],
@@ -129,7 +129,7 @@ class AMQPLibConnector extends AbstractAMQPConnector
 
     /**
      * Return result of task execution for $task_id
-     * @param \PhpAmqpLib\Connection\AMQPConnection $connection
+     * @param \PhpAmqpLib\Connection\AMQPStreamConnection $connection
      * @param string $task_id Celery task identifier
      * @param int $expire expire time result queue, milliseconds
      * @param boolean $removeMessageFromQueue whether to remove message from queue
