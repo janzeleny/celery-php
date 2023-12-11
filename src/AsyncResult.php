@@ -14,6 +14,8 @@ class AsyncResult
     private $complete_result; // Backend-dependent message instance (AMQPEnvelope or PhpAmqpLib\Message\AMQPMessage)
     private $body; // decoded array with message body (whatever Celery task returned)
     private $amqp = null; // AbstractAMQPConnector implementation
+    private $task_name;
+    private $task_args;
 
     /**
      * Don't instantiate AsyncResult yourself, used internally only
